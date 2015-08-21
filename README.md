@@ -1,7 +1,7 @@
 # mPassword
 You only need [mPassword.java](https://github.com/moslem-pc/mPassword/blob/master/src/ir/moslem_deris/mPassword.java) file. The rest files (Like Main.java) are here just to give examples!
 #### What mPassword class does:
-* Generates a powerful password _(includes uppercase and lowercase letters, numbers and characters)_ :smiling_imp:
+* Generates a custom powerful password _(includes uppercase and lowercase letters, numbers and characters)_ :smiling_imp:
 * Rates a string as a password _(percent)_ :sunglasses:
 
 #### Example:
