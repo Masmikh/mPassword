@@ -19,16 +19,34 @@ public class mPassword {
     public void setPassword(String newPassword){
         password=newPassword;
     }
-    public void setRandomPassword(){
+    public void setRandomPassword(boolean hasNumber, boolean hasUpperCaseLetter, boolean hasLowerCaseLetter, boolean hasCharacter, boolean hasSpace, boolean noSameChars, int length){
         String newPassword="";
-        StringBuilder reference = new StringBuilder("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~!@#$%^&*()_-+={}[]\\|:;\"'<>,.?/");
-        for (int i=1;i<=12;i++){
+        //  Setting up the reference as the user's choice
+        StringBuilder reference = new StringBuilder();
+        if (hasNumber)
+            reference.insert(0,"0123456789");
+        if (hasUpperCaseLetter)
+            reference.insert(0,"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        if (hasLowerCaseLetter)
+            reference.insert(0,"abcdefghijklmnopqrstuvwxyz");
+        if (hasCharacter)
+            reference.insert(0,"~!@#$%^&*()_-+={}[]\\|:;\"'<>,.?/");
+        if (hasSpace)
+            reference.insert(0," ");
+        //  Select each letter from the reference just made
+        for (int i=1;i<=length;i++){
             Random random = new Random();
             int charPosition = random.nextInt(reference.length());
             newPassword+=reference.charAt(charPosition);
-            reference.deleteCharAt(charPosition);
-            password=newPassword;
+            //  Remove the selected char if user wanted
+            if (noSameChars)
+                reference.deleteCharAt(charPosition);
         }
+        //  Set the generated password
+        password=newPassword;
+    }
+    public void setRandomPassword(){
+        setRandomPassword(true,true,true,true,false,true,12);
     }
     public int getRatePercent(){
         int rate=0;
